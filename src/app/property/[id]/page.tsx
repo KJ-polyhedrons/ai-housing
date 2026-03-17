@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScoreBar } from "@/components/results/ScoreBar";
 import { EnrollmentBadge } from "@/components/results/EnrollmentBadge";
+import { PropertyMap } from "@/components/results/PropertyMap";
 import {
   ArrowLeft,
   MapPin,
@@ -17,6 +18,7 @@ import {
   GraduationCap,
   ExternalLink,
   Star,
+  Map,
 } from "lucide-react";
 import type { PropertyWithRecommendation } from "@/types/api";
 
@@ -163,21 +165,32 @@ export default function PropertyDetailPage() {
       <div className="grid gap-6 md:grid-cols-3">
         {/* 左カラム: メイン情報 */}
         <div className="space-y-6 md:col-span-2">
-          {/* 物件画像 */}
+          {/* 地図 */}
           <Card className="overflow-hidden">
-            <div className="flex h-64 items-center justify-center bg-gray-100">
-              {property.image_url ? (
-                <img
-                  src={property.image_url}
-                  alt={property.name}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <div className="text-center text-muted-foreground">
-                  <Home className="mx-auto h-16 w-16" />
-                  <p className="mt-2 text-sm">画像準備中</p>
-                </div>
-              )}
+            <div className="flex items-center gap-2 border-b px-4 py-2.5">
+              <Map className="h-4 w-4 text-blue-600" />
+              <h2 className="text-sm font-semibold">周辺マップ</h2>
+              <div className="ml-auto flex items-center gap-3 text-[10px] text-muted-foreground">
+                <span className="flex items-center gap-1">
+                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-red-500" />
+                  物件
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-green-500" />
+                  保育園
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-purple-500" />
+                  学校
+                </span>
+              </div>
+            </div>
+            <div className="h-80">
+              <PropertyMap
+                property={property}
+                nurseries={nurseries}
+                schoolDistrict={school_district}
+              />
             </div>
           </Card>
 

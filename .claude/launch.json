@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "ai-housing",
-      "runtimeExecutable": "C:\\Users\\polyh\\ai-housing\\node_modules\\.bin\\next.cmd",
-      "runtimeArgs": ["dev"],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd /c/Users/polyh/ai-housing && npm run dev"],
       "port": 3000,
       "autoPort": true
     }
