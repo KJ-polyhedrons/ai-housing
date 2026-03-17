@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScoreBar } from "./ScoreBar";
@@ -15,7 +16,8 @@ export function PropertyCard({ data }: PropertyCardProps) {
   const { property, recommendation, nurseries, school_district } = data;
 
   return (
-    <Card className="overflow-hidden">
+    <Link href={`/property/${property.property_id}`}>
+    <Card className="overflow-hidden transition-shadow hover:shadow-lg cursor-pointer">
       <div className="flex flex-col md:flex-row">
         {/* 左: 物件画像 */}
         <div className="relative h-48 w-full bg-gray-100 md:h-auto md:w-64 shrink-0">
@@ -121,5 +123,6 @@ export function PropertyCard({ data }: PropertyCardProps) {
         </div>
       </div>
     </Card>
+    </Link>
   );
 }
